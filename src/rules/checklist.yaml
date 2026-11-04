@@ -1,0 +1,57 @@
+# 체크리스트 규칙 (문구/단계 정의). 판정 로직은 src/core/checklist.js
+# level: 문제가 확인됐을 때의 상태 (STOP | CHECK)
+# auto: false 이면 아직 자동 판정하지 않고 항상 UNVERIFIED
+- id: owner_vs_landlord
+  level: STOP
+  title: Registered owner and landlord do not match
+  compare: [Registry owner (name + birth date), Contract landlord (name + birth date)]
+  why: If the person signing is not the registered owner, they may have no right to rent out the home, and your deposit may not be protected.
+  action: Ask to see the landlord's ID and compare the name and birth date with the owner on the registry.
+- id: address_mismatch
+  level: STOP
+  title: Property address does not match
+  compare: [Registry address, Contract address]
+  why: The registry may be for a different home, so the other checks may not apply to the home you are renting.
+  action: Get a new registry for the exact address, including the unit number.
+- id: account_holder
+  level: STOP
+  title: Bank account holder is not the landlord
+  compare: [Contract account holder, Contract landlord]
+  why: Money sent to someone else's account may not count as paid to the landlord.
+  action: Send money only to an account in the landlord's own name.
+- id: seizure
+  level: STOP
+  title: Active seizure or provisional seizure on the registry
+  compare: [Registry section A (갑구) active entries, "—"]
+  why: A seizure means a creditor or the government has a claim on this home. It can be sold at auction and your deposit may be at risk.
+  action: Do not sign until you confirm in writing that the seizure has been cleared.
+- id: mortgage
+  level: CHECK
+  title: Mortgage (근저당) registered
+  compare: [Maximum secured amount (채권최고액), Your deposit]
+  why: If the home is sold at auction, the mortgage is paid before your deposit.
+  action: Compare the two amounts with the likely price of the home and ask the agent to explain.
+- id: trust
+  level: STOP
+  auto: false
+  title: Trust registration (신탁)
+  compare: [Registry section A (갑구), "—"]
+  why: In a trust, the trust company may be the real owner. A lease without its consent may not be valid.
+  action: Check the registry for a trust entry. If there is one, ask for the trust register (신탁원부) and written consent from the trustee.
+  note: Not checked automatically yet. Please check this item yourself.
+- id: recent_transfer
+  level: CHECK
+  auto: false
+  title: Ownership changed recently
+  compare: [Last transfer date on registry, Contract date]
+  why: A very recent sale can be a sign of a risky deal or a quick resale.
+  action: Look at the date of the last ownership transfer. If it is recent, ask why the home was sold.
+  note: Not checked automatically yet. Please check this item yourself.
+- id: risky_clause
+  level: CHECK
+  auto: false
+  title: Special terms that may be unfavorable
+  compare: [Special terms (특약사항), "—"]
+  why: Some special terms shift costs or risks to the tenant.
+  action: Read every item under the special terms and ask for unfair ones to be changed or removed.
+  note: Not checked automatically yet. Please read the special terms yourself.

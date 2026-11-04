@@ -28,6 +28,6 @@ export function applyMask(linesBySource, findings, purposeId, customWords = []) 
 }
 
 function tokenFor(f, rule) {
-  if (f.type === 'name' && rule.name === 'pseudonym') return `[${(f.role || 'Person').replace(/^./, (c) => c.toUpperCase())}_A]`;
+  if (f.type === 'name' && rule.name === 'pseudonym' && f.pseudonym) return f.pseudonym; // people.js가 붙인 가명
   return `[${f.type.toUpperCase()}]`;
 }

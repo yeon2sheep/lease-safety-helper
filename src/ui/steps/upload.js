@@ -3,7 +3,7 @@ import { debugView } from '../components/debugView.js';
 import { readPdfFile } from '../../core/pdfLoader.browser.js';
 import { classifyDocument } from '../../core/classify.js';
 import { detectSensitive } from '../../core/detect.js';
-import { groupPersons } from '../../core/persons.js';
+import { groupPeople, attachPseudonyms } from '../../core/people.js';
 import { runChecklist } from '../../core/checklist.js';
 
 const SLOTS = [
@@ -79,7 +79,8 @@ export function renderUpload(s, { goTo, rerender }) {
     disabled: !ready,
     onclick: () => {
       s.findings = detectSensitive(s.lines);
-      s.persons = groupPersons(s.findings);
+      s.persons = groupPeople(s.findings);
+      attachPseudonyms(s.findings, s.persons.groups);
       s.checklist = runChecklist(s);
       goTo(1);
     }

@@ -1,17 +1,17 @@
 import { h } from '../dom.js';
-import { statusBadge } from '../components/badge.js';
+import { statusBadge, cssKey } from '../components/badge.js';
 
-const ORDER = { STOP: 0, CHECK: 1, UNABLE: 2, NO_ISSUES: 3 };
+const ORDER = { STOP: 0, CHECK: 1, UNVERIFIED: 2, OK: 3 };
 
 function itemCard(item) {
-  return h(`article.card.item.item-${item.status.toLowerCase()}`, {},
+  return h(`article.card.item.item-${cssKey(item.status)}`, {},
     h('div.row', {}, statusBadge(item.status), h('h3', {}, item.title)),
     h('div.compare', {},
       item.compared.map((c) => h('div', {}, h('div.muted.small', {}, c.label), h('div.mono', {}, c.value ?? '—')))),
     h('p', {}, h('strong', {}, 'Why it matters: '), item.why),
-    h('p', {}, h('strong', {}, 'What to do: '), item.todo),
-    item.status === 'NO_ISSUES' ? h('p.muted.small', {}, 'Within the checked documents only. This does not guarantee safety.') : null,
-    item.status === 'UNABLE' ? h('p.muted.small', {}, 'We could not read this item from your documents. Please check it yourself.') : null
+    h('p', {}, h('strong', {}, 'What to do: '), item.action),
+    item.status === 'OK' ? h('p.muted.small', {}, 'Based only on the documents you uploaded. This is not a guarantee.') : null,
+    item.status === 'UNVERIFIED' ? h('p.muted.small', {}, item.note ?? 'We could not read this item from your documents. Please check it yourself.') : null
   );
 }
 
@@ -20,9 +20,8 @@ export function renderChecklist(s) {
   const count = (st) => items.filter((i) => i.status === st).length;
   return h('div', {},
     h('h2', {}, '2. Checklist'),
-    h('p.notice', {}, '⚠ Phase 1 preview: these results are placeholder data, not a real check.'),
     h('div.row.summary', {},
-      ['STOP', 'CHECK', 'NO_ISSUES', 'UNABLE'].map((st) => h('span', {}, statusBadge(st), ` ${count(st)}`))),
+      ['STOP', 'CHECK', 'OK', 'UNVERIFIED'].map((st) => h('span', {}, statusBadge(st), ` ${count(st)}`))),
     items.map(itemCard)
   );
 }
