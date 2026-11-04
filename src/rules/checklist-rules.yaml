@@ -1,0 +1,58 @@
+# 사기 여부 체크리스트 규칙 (설명 문구는 팀이 HUG/국토부 안내서를 참고해 다듬을 예정)
+# basis: official = 공식 안내 자료, team = 팀 기준
+- id: owner_vs_landlord
+  level: STOP
+  title: Registered owner and landlord do not match
+  compare: [Registry owner (name + birth date), Contract landlord (name + birth date)]
+  why: If the person signing is not the registered owner, they may have no right to rent out the home, and your deposit may not be protected.
+  todo: Ask to see the landlord's ID and compare the name and birth date with the owner on the registry.
+  basis: official
+- id: seizure
+  level: STOP
+  title: Seizure or provisional seizure on the registry
+  compare: [Registry section A (갑구) entries, —]
+  why: A seizure means a creditor or the government has a claim on this home. It can be sold at auction and your deposit may be at risk.
+  todo: Do not sign until you confirm in writing that the seizure has been cleared.
+  basis: official
+- id: address_mismatch
+  level: STOP
+  title: Property address does not match
+  compare: [Registry address, Contract address]
+  why: The registry may be for a different home, so the checks above may not apply to the home you are renting.
+  todo: Get a new registry for the exact address, including the unit number.
+  basis: team
+- id: trust
+  level: STOP
+  title: Trust registration (신탁) found
+  compare: [Registry section A (갑구), —]
+  why: In a trust, the trust company may be the real owner. A lease without its consent may not be valid.
+  todo: Ask for the trust register (신탁원부) and written consent from the trustee.
+  basis: official
+- id: account_holder
+  level: STOP
+  title: Bank account holder is not the landlord
+  compare: [Contract account holder, Contract landlord]
+  why: Money sent to someone else's account may not count as paid to the landlord.
+  todo: Send money only to an account in the landlord's own name.
+  basis: official
+- id: mortgage
+  level: CHECK
+  title: Mortgage (근저당) registered
+  compare: [Maximum secured amount (채권최고액), Your deposit]
+  why: If the home is sold at auction, the mortgage is paid before your deposit.
+  todo: Compare the two amounts with the likely price of the home and ask the agent to explain.
+  basis: official
+- id: recent_transfer
+  level: CHECK
+  title: Ownership changed recently
+  compare: [Last transfer date on registry, Contract date]
+  why: A very recent sale can be a sign of a risky deal or a quick resale.
+  todo: Ask why the home was sold and check the other items carefully.
+  basis: team
+- id: risky_clause
+  level: CHECK
+  title: Special terms that may be unfavorable
+  compare: [Special terms (특약사항), Caution phrase list]
+  why: Some special terms shift costs or risks to the tenant.
+  todo: Read each highlighted sentence and ask for it to be changed or removed.
+  basis: team

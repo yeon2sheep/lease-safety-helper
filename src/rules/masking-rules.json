@@ -1,0 +1,22 @@
+{
+  "purposes": {
+    "explain_terms": {
+      "label": "Explain clauses & terms",
+      "keeps": "Keeps: document structure, terms, amounts, clauses",
+      "hides": "Hides: names, ID numbers, contacts, accounts, addresses",
+      "rules": { "name": "hide", "id_number": "hide", "contact": "hide", "account": "hide", "registry_no": "hide", "address": "hide" }
+    },
+    "fraud_risk": {
+      "label": "Check fraud risk",
+      "keeps": "Keeps: role pseudonyms, city/district, mortgages, seizures, check results",
+      "hides": "Hides: ID numbers, contacts, accounts, street number & unit",
+      "rules": { "name": "pseudonym", "id_number": "hide", "contact": "hide", "account": "hide", "registry_no": "hide", "address": "district_only" }
+    },
+    "contract_conditions": {
+      "label": "Explain contract conditions",
+      "keeps": "Keeps: deposit, rent, period, special terms",
+      "hides": "Hides: names, ID numbers, contacts, accounts, addresses",
+      "rules": { "name": "hide", "id_number": "hide", "contact": "hide", "account": "hide", "registry_no": "hide", "address": "hide" }
+    }
+  }
+}

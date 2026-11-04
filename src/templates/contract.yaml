@@ -1,0 +1,20 @@
+# 주택임대차표준계약서 템플릿
+id: contract
+label: Lease Contract
+keywords:
+  - 주택임대차표준계약서
+  - 임대인
+  - 임차인
+  - 특약사항
+  - 보증금
+  - 차임
+  - 임대차기간
+  - 임차주택의표시
+  - 계약내용
+  - 개업공인중개사
+  - 잔금
+minHits: 4
+fields:
+  landlord: { anchor: 임대인, next: 성명 }
+  address: { anchor: 소재지 }
+  accountHolder: { anchor: 예금주 }
