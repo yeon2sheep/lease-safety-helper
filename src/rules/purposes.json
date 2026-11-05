@@ -1,0 +1,40 @@
+{
+  "alwaysHide": ["id_number", "contact", "account", "registry_no"],
+  "purposes": {
+    "explain_terms": {
+      "label": "Explain clauses & terms",
+      "keeps": "Keeps: document structure and legal terms",
+      "hides": "Hides: names, addresses, amounts, ID numbers, phone numbers, bank accounts",
+      "rules": { "name": "hide", "address": "hide", "amount": "hide" },
+      "includeChecklist": false,
+      "questions": [
+        "Please explain the structure of these two documents and what each section is for.",
+        "Explain the legal terms and clauses in them in simple English."
+      ]
+    },
+    "fraud_risk": {
+      "label": "Check fraud risk",
+      "keeps": "Keeps: role pseudonyms, city/district, amounts, mortgages, seizures, check results",
+      "hides": "Hides: ID numbers, phone numbers, bank accounts, street numbers and unit numbers",
+      "rules": { "name": "pseudonym", "address": "district_only", "amount": "keep" },
+      "includeChecklist": true,
+      "questions": [
+        "Check whether the registered owner and the landlord are the same person.",
+        "Check whether the mortgage is excessive compared to the deposit, and whether any seizure puts my deposit at risk.",
+        "Tell me what I should confirm before I sign."
+      ]
+    },
+    "contract_conditions": {
+      "label": "Explain contract conditions",
+      "keeps": "Keeps: deposit, rent, period, special terms",
+      "hides": "Hides: names, addresses, ID numbers, phone numbers, bank accounts",
+      "rules": { "name": "hide", "address": "hide", "amount": "keep" },
+      "includeChecklist": false,
+      "questions": [
+        "Explain the deposit, rent, management fee and contract period in simple English.",
+        "Go through the special terms and point out anything unfavorable to the tenant.",
+        "What should I ask the landlord or agent to change before I sign?"
+      ]
+    }
+  }
+}

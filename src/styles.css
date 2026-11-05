@@ -36,6 +36,11 @@ body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; 
 .purpose { cursor:pointer; font:inherit; } .purpose.selected { border:2px solid var(--pri); background:#eef3fd; }
 .preview { white-space:pre-wrap; font-size:12px; max-height:480px; overflow:auto; background:#fafafa; padding:8px; border-radius:6px; }
 mark.pseudo { background:#fde293; border-radius:3px; padding:0 2px; }
+.mask-box { background:#202124; color:#fff; border-radius:3px; padding:0 3px; }
+.tabs { display:flex; gap:6px; margin:8px 0; }
+.tab { border:1px solid #ccc; background:#fff; border-radius:6px 6px 0 0; padding:6px 12px; cursor:pointer; font-size:13px; }
+.tab.active { border-color:var(--pri); color:var(--pri); font-weight:600; background:#eef3fd; }
+.custom .row .text { min-width:190px; }
 .check { display:flex; gap:6px; align-items:center; margin:4px 0; }
 .confirm { font-weight:600; margin:16px 0; }
 .tag { background:#e8eaed; border-radius:4px; padding:1px 6px; font-size:11px; }
